@@ -1,0 +1,337 @@
+<nav id="navbar">
+  <header>Vue.js</header>
+  <ul>
+    <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+    <li>
+      <a class="nav-link" href="#The_Progressive_Framework">The Progressive Framework</a>
+    </li>
+    <li>
+      <a class="nav-link" href="#Ways_of_Using_Vue">Ways of Using Vue</a>
+    </li>
+    <li><a class="nav-link" href="#Hello_world">Hello world</a></li>
+    <li><a class="nav-link" href="#Single_file_Components">Single File Components</a></li>
+    <li>
+      <a class="nav-link" href="#API_Styles">API Styles</a>
+    </li>
+    <li><a class="nav-link" href="#Template_Syntax">Template Syntax</a></li>
+    <li><a class="nav-link" href="#Quick_Start">Quick Start</a></li>
+    <li><a class="nav-link" href="#Composition_API_FAQ">Composition API FAQ</a></li>
+    <li><a class="nav-link" href="#Accessibility">Accessibility</a></li>
+    <li>
+      <a class="nav-link" href="#Security">Security</a>
+    </li>
+    <li><a class="nav-link" href="#Reference">Reference</a></li>
+  </ul>
+</nav>
+<main id="main-doc">
+  <section class="main-section" id="Introduction">
+    <header>Introduction</header>
+    <article>
+      <p>
+        Vue (pronounced /vjuː/, like view) is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS and JavaScript, and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be it simple or complex.
+      </p>
+
+      <p>
+
+        <b>Here is a minimal example:</b>
+      </p>
+      <code>import { createApp } from 'vue'
+
+        createApp({
+        data() {
+        return {
+        count: 0
+        }
+        }
+        }).mount('#app')</code>
+
+      <p>The above example demonstrates the two core features of Vue:</p>
+      <ul>
+        <li>
+          Declarative Rendering: Vue extends standard HTML with a template syntax that allows us to declaratively describe HTML output based on JavaScript state.
+
+        </li>
+        <li>
+          Reactivity: Vue automatically tracks JavaScript state changes and efficiently updates the DOM when changes happen.
+        </li>
+      </ul>
+    </article>
+  </section>
+  <section class="main-section" id="The_Progressive_Framework">
+    <header>The Progressive Framework</header>
+    <article>
+      <p>Vue is a framework and ecosystem that covers most of the common features needed in frontend development. But the web is extremely diverse - the things we build on the web may vary drastically in form and scale. With that in mind, Vue is designed to be flexible and incrementally adoptable. Depending on your use case, Vue can be used in different ways:</p>
+
+      <ul>
+        <li>
+          Enhancing static HTML without a build step.
+        </li>
+        <li>Embedding as Web Components on any page.</li>
+        <li>
+          Single-Page Application (SPA)
+        </li>
+        <li>Full Stack / Server Side Rendering (SSR)</li>
+        <li>Jamstack / Static-Site-Generation (SSG)</li>
+        <li>Targeting desktop, mobile, WebGL or even the terminal</li>
+      </ul>
+    </article>
+  </section>
+  <section class="main-section" id="Ways_of_Using_Vue">
+    <header>Ways of Using Vue</header>
+    <article>
+      <p>
+        We believe there is no "one size fits all" story for the web. This is why Vue is designed to be flexible and incrementally adoptable. Depending on your use case, Vue can be used in different ways to strike the optimal balance between stack complexity, developer experience and end performance.
+      </p>
+
+      <p>
+        <b>Standalone Script:</b>
+        Vue can be used as a standalone script file - no build step required! If you have a backend framework already rendering most of the HTML, or your frontend logic isn't complex enough to justify a build step, this is the easiest way to integrate Vue into your stack. You can think of Vue as a more declarative replacement of jQuery in such cases.
+
+        Vue also provides an alternative distribution called petite-vue that is specifically optimized for progressively enhancing existing HTML. It has a smaller feature set, but is extremely lightweight and uses an implementation that is more efficient in no-build-step scenarios.
+      </p>
+      <p>
+        <b>Embedded Web Components:</b>
+        You can use Vue to build standard Web Components that can be embedded in any HTML page, regardless of how they are rendered. This option allows you to leverage Vue in a completely consumer-agnostic fashion: the resulting web components can be embedded in legacy applications, static HTML, or even applications built with other frameworks.
+      </p>
+      <p><b>Single-Page Application (SPA):</b>
+        Some applications require rich interactivity and non-trivial stateful logic on the frontend. The best way to build such applications is to use an architecture where Vue not only controls the entire page, but also handles data updates and navigation without having to reload the page. This type of application is typically referred to as a Single-Page Application (SPA).
+
+        Vue provides core libraries and comprehensive tooling support with amazing developer experience for building modern SPAs, including:</p>
+      <ul>
+        <li>Client-side router</li>
+        <li>Blazing fast build tool chain</li>
+        <li>IDE support</li>
+        <li>Browser devtools</li>
+        <li>TypeScript integrations</li>
+        <li>Testing utilities</li>
+      </ul>
+    </article>
+  </section>
+  <section class="main-section" id="Hello_world">
+    <header>Hello world</header>
+    <article>
+      We do this by enclosing the “message” variable in double curly braces {{ }}, which are the characters used by Vue to interpolate a value within HTML.
+      <code>
+        new Vue({
+        el: "#app",
+        data: {
+        message: "Hello World!"
+        }
+        });
+      </code>
+
+      Save, open the page, and that's it!
+    </article>
+  </section>
+  <section class="main-section" id="Single_file_Components">
+    <header>Single File Components</header>
+    <p>
+      In most build-tool-enabled Vue projects, we author Vue components using an HTML-like file format called Single File Component (also known as *.vue files, abbreviated as SFC). A Vue SFC, as the name suggests, encapsulates the component's logic (JavaScript), template (HTML), and styles (CSS) in a single file. Here's the previous example, written in SFC format:
+    </p>
+    <code>
+      script
+      export default {
+      data() {
+      return {
+      count: 0
+      }
+      }
+      }
+      /script
+
+      template
+      button @click="count++">Count is: {{ count }} /button
+      /template
+
+      style scoped
+      button {
+      font-weight: bold;
+      }
+      /style
+    </code>
+    <p>SFC is a defining feature of Vue, and is the recommended way to author Vue components if your use case warrants a build setup.</p>
+  </section>
+  <section class="main-section" id="API_Styles">
+    <header>API Styles</header>
+    <article>
+      Vue components can be authored in two different API styles: <b>Options API</b> and <b>Composition API</b>.
+      <p>
+        <strong>Options API</strong> <code>
+          script
+          export default {
+          // Properties returned from data() becomes reactive state
+          // and will be exposed on `this`.
+          data() {
+          return {
+          count: 0
+          }
+          },
+
+          // Methods are functions that mutate state and trigger updates.
+          // They can be bound as event listeners in templates.
+          methods: {
+          increment() {
+          this.count++
+          }
+          },
+
+          // Lifecycle hooks are called at different stages
+          // of a component's lifecycle.
+          // This function will be called when the component is mounted.
+          mounted() {
+          console.log(`The initial count is ${this.count}.`)
+          }
+          }
+          /script
+
+          template
+          button @click="increment">Count is: {{ count }} /button
+          /template
+        </code> With Options API, we define a component's logic using an object of options such as data, methods, and mounted. Properties defined by options are exposed on this inside functions, which points to the component instance:
+      </p>
+      <p>
+        <strong>Composition API</strong> <code>
+          script setup
+          import { ref, onMounted } from 'vue'
+
+          // reactive state
+          const count = ref(0)
+
+          // functions that mutate state and trigger updates
+          function increment() {
+          count.value++
+          }
+
+          // lifecycle hooks
+          onMounted(() => {
+          console.log(`The initial count is ${count.value}.`)
+          })
+          /script
+
+          template
+          button @click="increment">Count is: {{ count }} /button
+          /template </code> With Composition API, we define a component's logic using imported API functions. In SFCs, Composition API is typically used with "script setup". The setup attribute is a hint that makes Vue perform compile-time transforms that allow us to use Composition API with less boilerplate. For example, imports and top-level variables / functions declared in "script setup" are directly usable in the template.
+
+        Here is the same component, with the exact same template, but using Composition API and "script setup" instead.
+      </p>
+      <p>
+        First of all, both API styles are fully capable of covering common use cases. They are different interfaces powered by the exact same underlying system. In fact, the Options API is implemented on top of the Composition API! The fundamental concepts and knowledge about Vue are shared across the two styles.
+      </p>
+    </article>
+  </section>
+  <section class="main-section" id="Template_Syntax">
+    <header>Template Syntax</header>
+    <article>
+      <p>
+        Vue uses an HTML-based template syntax that allows you to declaratively bind the rendered DOM to the underlying component instance's data. All Vue templates are syntactically valid HTML that can be parsed by spec-compliant browsers and HTML parsers.
+      </p>
+
+      <p>
+        Under the hood, Vue compiles the templates into highly-optimized JavaScript code. Combined with the reactivity system, Vue is able to intelligently figure out the minimal number of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.
+      </p>
+      <p>
+        If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also directly write render functions instead of templates, with optional JSX support. However, do note that they do not enjoy the same level of compile-time optimizations as templates.
+      </p>
+
+      <p><b>Text Interpolation</b></p>
+      <p>The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):</p>
+
+      <code> span Message: {{ msg }} /span </code>
+      <p>The mustache tag will be replaced with the value of the msg property from the corresponding component instance. It will also be updated whenever the msg property changes.</p>
+    </article>
+  </section>
+  <section class="main-section" id="Quick_Start">
+    <header>Quick Start</header>
+    <article>
+      <p>
+        Depending on your use case and preference, you can use Vue with or without a build step.
+      </p>
+
+      <p><b>With Build Tools:</b></p>
+      <p>A build setup allows us to use Vue Single-File Components (SFCs). The official Vue build setup is based on Vite, a frontend build tool that is modern, lightweight and extremely fast.</p>
+      <p><b>Online:</b></p>
+      <p>You can try Vue with SFCs online on StackBlitz. StackBlitz runs the Vite-based build setup directly in the browser, so it is almost identical to the local setup but doesn't require installing anything on your machine.</p>
+    </article>
+  </section>
+  <section class="main-section" id="Composition_API_FAQ">
+    <header>Composition API FAQ</header>
+    <article>
+      <p>
+        Composition API is a set of APIs that allows us to author Vue components using imported functions instead of declaring options. It is an umbrella term that covers the following APIs:
+      </p>
+      <ul>
+        <li>Reactivity API, e.g. ref() and reactive(), that allows us to directly create reactive state, computed state, and watchers.</li>
+        <li>Lifecycle Hooks, e.g. onMounted() and onUnmounted(), that allow us to programmatically hook into the component lifecycle.</li>
+        <li>Dependency Injection, i.e. provide() and inject(), that allow us to leverage Vue's dependency injection system while using Reactivity APIs.</li>
+      </ul>
+
+      <p>
+        Composition API is a built-in feature of Vue 3, and is currently available to Vue 2 via the officially maintained @vue/composition-api plugin. In Vue 3, it is also primarily used together with the "script setup" syntax in Single File Components. Here's a basic example of a component using Composition API:
+      </p>
+
+      <code> script setup
+        import { ref, onMounted } from 'vue'
+
+        // reactive state
+        const count = ref(0)
+
+        // functions that mutate state and trigger updates
+        function increment() {
+        count.value++
+        }
+
+        // lifecycle hooks
+        onMounted(() => {
+        console.log(`The initial count is ${count.value}.`)
+        })
+        /script
+
+        template
+        button @click="increment">Count is: {{ count }} /button
+        /template </code>
+
+      <p>
+        Despite an API style based on function composition, Composition API is NOT functional programming. Composition API is based on Vue's mutable, fine-grained reactivity paradigm, whereas functional programming emphasizes immutability.
+      </p>
+
+      <p>
+        If you are interested in learning how to use Vue with Composition API, you can set the site-wide API preference to Composition API using the toggle at the top of the left sidebar, and then go through the guide from the beginning.
+      </p>
+
+    </article>
+  </section>
+  <section class="main-section" id="Accessibility">
+    <header>Accessibility</header>
+    <article>
+      <p>Web accessibility (also known as a11y) refers to the practice of creating websites that can be used by anyone — be that a person with a disability, a slow connection, outdated or broken hardware or simply someone in an unfavorable environment. For example, adding subtitles to a video would help both your deaf and hard-of-hearing users and your users who are in a loud environment and can't hear their phone. Similarly, making sure your text isn't too low contrast will help both your low-vision users and your users who are trying to use their phone in bright sunlight.</p>
+    </article>
+  </section>
+  <section class="main-section" id="Security">
+    <header>Security</header>
+    <article>
+      When a vulnerability is reported, it immediately becomes our top concern, with a full-time contributor dropping everything to work on it. To report a vulnerability, please email security@vuejs.org.
+
+      While the discovery of new vulnerabilities is rare, we also recommend always using the latest versions of Vue and its official companion libraries to ensure your application remains as secure as possible.
+
+      <p><strong>Never Use Non-trusted Templates</strong></p>
+      <p>The most fundamental security rule when using Vue is never use non-trusted content as your component template. Doing so is equivalent to allowing arbitrary JavaScript execution in your application - and worse, could lead to server breaches if the code is executed during server-side rendering. An example of such usage:</p>
+
+      <code>Vue.createApp({
+        template: `div` + userProvidedString + `/div` // NEVER DO THIS
+        }).mount('#app')</code>
+
+      Vue templates are compiled into JavaScript, and expressions inside templates will be executed as part of the rendering process. Although the expressions are evaluated against a specific rendering context, due to the complexity of potential global execution environments, it is impractical for a framework like Vue to completely shield you from potential malicious code execution without incurring unrealistic performance overhead. The most straightforward way to avoid this category of problems altogether is to make sure the contents of your Vue templates are always trusted and entirely controlled by you.er nested if statements.
+    </article>
+  </section>
+  <section class="main-section" id="Reference">
+    <header>Reference</header>
+    <article>
+      <ul>
+        <li>
+          All the documentation in this page is taken from
+          <a href="https://vuejs.org/" target="_blank">Vue.js</a>
+        </li>
+      </ul>
+    </article>
+  </section>
+</main>
